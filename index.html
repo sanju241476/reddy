@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petrol Ordering System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Petrol Ordering System</h1>
+    </header>
+
+    <div class="content">
+        <h2>Order Fuel</h2>
+        
+        <!-- Fuel Ordering Form -->
+        <form id="fuel-order-form">
+            <label for="fuel-type">Fuel Type:</label>
+            <select id="fuel-type" name="fuel-type">
+                <option value="petrol">Petrol</option>
+                <option value="diesel">Diesel</option>
+            </select>
+
+            <label for="quantity">Quantity (in liters):</label>
+            <input type="number" id="quantity" name="quantity" min="1" placeholder="Enter quantity" required>
+
+            <div class="price-info">
+                <p>Price per Liter: ₹110</p>
+                <p>Total Cost: ₹<span id="total-cost">0</span></p>
+            </div>
+
+            <label for="address">Delivery Address:</label>
+            <textarea id="address" name="address" rows="4" placeholder="Enter delivery address" required></textarea>
+
+            <button type="submit">Place Order</button>
+        </form>
+    </div>
+
+    <!-- Live Chat Button -->
+    <div class="chat-btn-container">
+        <input type="checkbox" id="chat-toggle" class="chat-toggle">
+        <label for="chat-toggle" class="chat-btn">💬</label>
+
+        <!-- Chat Box -->
+        <div class="chat-box">
+            <div class="chat-header">
+                <span>Live Chat</span>
+                <label for="chat-toggle" class="close-btn">X</label>
+            </div>
+            <div class="chat-body">
+                <p><strong>Support:</strong> How can we assist you today?</p>
+            </div>
+            <div class="chat-input">
+                <input type="text" placeholder="Type your message...">
+                <button>Send</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Petrol Ordering System | <a href="mailto:support@petrolorder.com">Contact Us</a></p>
+    </footer>
+
+    <script>
+        // Update total cost based on quantity input
+        const quantityInput = document.getElementById('quantity');
+        const totalCost = document.getElementById('total-cost');
+
+        quantityInput.addEventListener('input', function() {
+            const quantity = parseFloat(quantityInput.value);
+            if (quantity > 0) {
+                totalCost.textContent = (quantity * 110).toFixed(2);  // Assuming ₹110 per liter
+            } else {
+                totalCost.textContent = '0';
+            }
+        });
+    </script>
+
+</body>
+</html>
